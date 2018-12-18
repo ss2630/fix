@@ -1,0 +1,258 @@
+/*********************
+ Quick setup rules
+**********************/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    width:100%;
+    overflow:auto;
+    font-size: 16px;
+    line-height: 1.4; /* Better legibility for blocks of text */
+    font-family: 'Lato', 'Arial', sans-serif;
+    background-color: #fcfcfc; /* Light grey background makes white background articles 'pop' */
+}
+
+
+/*********************
+ Header
+**********************/
+header {
+    width: 100%;
+    height: 250px;
+    padding-top: 120px; /* Pushes text down, closer to the nav */
+    text-align: center;
+    background-image: url('../img/header.jpg'); /* '..' means: Go up a directory, then find... /img/header.jpg' */
+    background-size: cover; /* Similar to object-fit property, keeps aspect ratio + clips image if image is too large. */
+    background-position-y: center; /* Let's center the background image vertically so we get the main part */
+}
+
+header h1 {
+    margin: 0; /* Let positioning be done through the header styles */
+    color: #fff;
+    font-size: 65px;
+    /* Note: RGBA is RGB with an Alpha channel, aka, transparency */
+    text-shadow: -3px 2px 2px rgba(0,0,0,0.7); /* Make the text stand out from its background with a black shadow */
+    font-family: 'Amatic SC', cursive;
+}
+
+/*********************
+Navigation
+**********************/
+nav {
+    float:left;
+    width:20%;
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0px 2px 8px 0 rgba(0,0,0,0.15); /* Adds a shadow below the nav, provides a sense of depth */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 35px;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1.1px; /* Adds a little more space between letters */
+}
+
+
+
+nav ul li a:hover {
+    /* As an addendum to the note above,
+    'highlight' colors can be found by simply shifting saturation down and luminosity up.
+    Likewise, 'shadow' colors can be found by shifting saturation up and luminosity down.
+    Remember, light tends to wash out colors */
+    color: hsla(321, 55%, 40%, 1);
+}
+
+/* Selects just the last <li> in the list, we don't need a margin there, and having one would ruin the centering */
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+/*********************
+Main / Articles
+**********************/
+
+main {
+    /* margin: 0 auto; */
+    margin-top: 50px;
+    margin-left: 250px;
+    padding: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch; /* All items on the same line will have the same height */
+}
+
+article {
+    margin-left: 25px;
+    flex-basis: calc(50% - 20px);
+    flex-grow: 0;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+article:first-child {
+    flex-basis: 100%;
+    flex-shrink: 0; /* Must take up the full 100% */
+}
+
+
+article {
+    background-color: #fff;
+    box-shadow: 0 0 9px 5px hsla(321, 20%, 70%, 0.1);
+    margin-bottom: 25px;
+    border-radius: 4px; /* Rounded corners */
+}
+
+article .post-image-wrapper {
+    flex-basis: 35%;
+    height: 100%;
+    /* flex-grow: 1; /* These images will grow as tall as the content next to them */
+    /* flex-shrink: 0; */ 
+}
+
+article:first-child .post-image-wrapper {
+    margin-top: 35px;
+    flex-basis: 28%; /* This one is a larger article, so give the image a little less width */
+    align-content: center;
+}
+
+article .post-image {
+    width: 500px;
+    height: 400px;
+    object-fit: cover;
+    padding-left: 150px; 
+    padding-top: 20px;
+}
+
+article .post-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding: 15px;
+}
+
+article .post-content h2 {
+    margin-top: 0;
+    margin-bottom: 0px;
+    font-size: 18px;
+    flex-grow: 0;
+}
+
+article:first-child .post-content h2 {
+    font-size: 10px;
+}
+
+article time {
+    text-transform: uppercase;
+    color: hsla(321, 50%, 20%, 0.8);
+    font-size: 14px;
+    flex-grow: 0;
+}
+
+article summary {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+article a.read-more {
+    text-decoration: none;
+    align-self: flex-end; /* Moves the link to the far right */
+    flex-grow: 0;
+    padding: 6px 12px;
+    color: #fff;
+    background-color: hsla(321, 65%, 25%, 1);
+    border-radius: 3px;
+    box-shadow: 0 0 6px 0px rgba(0,0,0,0.15);
+}
+
+article a.read-more:hover {
+    background-color: hsla(321, 55%, 40%, 1);
+    margin-right: 1px;
+    box-shadow: 2px 2px 9px 0px rgba(0,0,0,0.35);
+}
+
+.panel panel-default left-menu-container {
+    margin: 15px;
+}
+
+
+/*********************
+Responsive Styles
+These styles override earlier styles when certain page conditions are met.
+Use these to change styles, for example, when viewing on mobile phones or small screens.
+**********************/
+@media (max-width: 992px) {
+    main {
+        width: 50%;
+    }
+}
+
+
+#fleft{
+    padding-right: 20px;
+    position: absolute;
+    left:15px;
+    display:inherit;
+    z-index:1;
+    float:left;
+    width:20%;
+    height:100%;
+    margin-top:200px;
+    padding-left: 15px;
+}
+
+
+#searchbar{
+    margin: 0px 200px;
+    padding-bottom: 20px;
+}
+
+#logoagora {
+    height: 60px;
+    width: 200px;
+    padding-top:10px;   
+}
+#bodybox{
+    float: left;
+    width: 25%;     
+    padding: 15px;
+    margin-top: 125px;
+    margin-left: 15px;
+}
+nav div {
+    list-style-type: none;
+}
+/* section:after{
+    content: "";
+    display: table;
+    clear: both;
+} */
+
+#fright{
+    float:right;
+    width:80%;
+}
+
+#disqus_thread{
+    width: 80%; 
+    margin-left: 175px;
+}

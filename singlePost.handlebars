@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AGORA</title>
+        <link rel="stylesheet" href="/styles/styles-advanced.css" />
+        <link rel="stylesheet" href="/styles/login.css" />
+        <link rel="stylesheet" href="/styles/forms.css" />
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Lato" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    </head>
+    <body>
+        {{>header}}
+            <main style="margin-left: 175px;">
+                <!-- Loop through the 'articles' in the object passed to the templating engine -->
+                <!-- Properties of each article are accessible within this #each block simply
+                by referencing their name in curly braces -->
+                <article>
+                    <div class="post-image-wrapper">
+                        <img src="{{article.image}}" class="post-image" />
+                    </div>
+                    <div class="post-content">
+                        <time>{{article.time}}</time>
+                        <h3>Title: {{article.book_name}}</h3>
+                        <condition>Condition: {{article.conditions}}</condition>
+                        <p>Price: {{article.price}}</p>
+                        
+                        <a href="/books/{{article.id}}" class="read-more">Read more ></a>
+                    </div>
+                </article>
+              
+            </main>
+    
+            <div id="disqus_thread" style="width:80%"></div>
+                    <script>
+
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://xiaoyanglocal.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+        {{>footer}}
+    </body>
+</html>

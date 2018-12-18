@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin</title>
+        <link rel="stylesheet" href="/styles/login.css" />
+        <link rel="stylesheet" href="/styles/forms.css" />
+        <link rel="stylesheet" href="/styles/styles-advanced.css" />
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Lato" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+    {{> header}}
+    
+    <div class="row" style="width:80%; margin-top: 250px; margin-left: 150px;">
+        <div class="col-md-12">
+            <table class="table" style="margin-top:250px;">
+            <thead>                    
+                <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                        Book Name
+                </th>
+                <th>
+                    Book Price
+                </th>
+                <th>
+                    Condition
+                </th>
+                <th>
+                    <a class="btn btn-danger btn-large" href="/admin">New Book</a>
+                </th>                    
+                </tr>
+                </thead>
+                <tbody>
+                {{# each books }}
+                <tr>
+                    <td>
+                        {{id}}
+                    </td>
+                    <td>
+                        {{book_name}}
+                    </td>
+                    <td>
+                        <time>{{price}}</time>
+                    </td>
+                    <td>
+                        {{conditions}}
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-large" href="/managebook/{{id}}">Edit</a>
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{!-- <nav style="margin-top: 100px;">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#">Previous</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">4</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">5</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav> --}}
+
+<script>
+        function Search()
+        {
+            var category = -1;
+            if ($("#search_param") && $("#search_param").val()) {
+                category = $("#search_param").val();
+            }
+            var sort = 1;
+            if ($('#sort_param') && $('#sort_param').val()) {
+                sort = $('#sort-field').val();
+            }
+            var data = {
+                "q": $('#query').val(),
+                "category": category,
+                "sort": sort
+            };
+            fbq('track', 'Search', {
+                query: data["q"],
+                category: data["category"],
+                sort: data["sort"]
+            });
+            var params = $.param(data);
+            window.location.href = "/Search?" + params;
+        }
+        function BindSearchDirect() {
+            $("#query").keyup(function (event) {
+                if (event.keyCode == 13) {
+                    $("#searchgo").click();
+                }
+            });
+            $('#searchgo').click(function () {
+                Search();
+            });
+            $(document).ready(function (e) {
+                $('.search-panel .dropdown-menu').find('a').click(function (e) {
+                    e.preventDefault();
+                    var param = $(this).attr("href").replace("#", "");
+                    var concept = $(this).text();
+                    $('.search-panel span#search_concept').text(concept);
+                    $('.input-group #search_param').val(param);
+                });
+            });
+        }
+        $(document).ready(BindSearchDirect);
+    </script>
+                <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/scripts.js"></script>
+{{>footer}}
+</body>
+</html>

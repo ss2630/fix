@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin</title>
+        <link rel="stylesheet" href="/styles/login.css" />
+        <link rel="stylesheet" href="/styles/admin.css" />
+        <link rel="stylesheet" href="/styles/forms.css" />
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Lato" rel="stylesheet">
+         <link rel="stylesheet" href="/styles/styles-advanced.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    </head>
+    <body>
+        {{> header}}
+       <div id="admin-wrap">
+    <h1>Please enter your new book.</h1>
+    {{#if adminMessage}}
+        <div class="errorMessage">
+            {{adminMessage}}
+        </div>
+    {{/if}}
+    <form method="POST" class="post-form form" action="/update">
+        <h2>Upload Book</h2>
+        <input type="hidden", name="id", value="{{article.id}}">
+        <div class="input-wrap">
+            <label for="title" >Book Title</label>
+            <input type="text"  name="title" value="{{article.Book_name}}"/>
+        </div>
+        <div class="input-wrap">
+            <label for="summary">Price</label>
+            <input type="text" name="price" value="{{article.price}}"></input>
+        </div>
+        {{!-- change --}}
+        <div class="input-wrap">
+            <label for="full_text">Condition</label>
+            <select name="form" id="bookcondition">
+                <option value="New condition" data-filtername="New">New</option>
+                <option value="Very Good condition" data-filtername="Very Good">Very Good</option>
+                <option value="Good condition" data-filtername="Good">Good</option>
+                <option value="Acceptable condition" data-filtername="Acceptable">Acceptable</option>
+                <option value="Poor condition" data-filtername="Poor">Poor</option>
+            </select>
+                    {{!-- <textarea name="full_text"></textarea> --}}
+                </div>
+                <div class="input-wrap">
+                    <label for="image"> Image</label>
+                    {{!-- <input type="file" class="imgur" accept="image/*" data-max-size="5000"/> --}}
+                    <input type="text" name="image" />
+                </div>
+                <button type="submit">Add Book</button>
+
+            </form>
+            <button type="submit" action="/logout">log out</button>
+        </div>
+        {{>footer}}
+    </body>
+</html>

@@ -1,0 +1,58 @@
+
+.bg-primary {
+    background-color: #000;
+    }
+    
+    .bg-circle{
+        display: flex;
+        width: 80px;
+        height: 80px;
+        padding: 100px;
+        color: #ececec;
+        text-align: center;
+        border-radius: 50%;
+    }
+    
+    .bg-circle-outline{
+        width: 50px;
+        height: 50px;
+        color:smoke;
+        padding: 10px 2px;
+        border: 2px solid;
+        border-color: smoke;
+        border-radius: 50%;
+        text-align:center;
+        white-space: nowrap;
+        display: inline-block;
+        margin: 20px;
+    }
+    
+    
+    
+    
+    .container{
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        justify-content: space-around;
+        padding: 20px; 
+    }
+    
+    .copy{
+        text-align: center;
+    }
+    
+    
+    .bg-circle a, a:hover, .media a:focus{
+        text-decoration: none !important;
+        outline: none;
+        color: #ececec;
+        flex-direction:row;
+    }
+    .bg-circle-outline a, a:hover, .media a:focus{
+        text-decoration: none !important;
+        outline: none;
+        color: #ececec;
+        padding:10px;
+    }
+    

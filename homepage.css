@@ -1,0 +1,26 @@
+body {
+    background: image url("https://www.google.com/search?newwindow=1&safe=active&biw=1527&bih=810&tbm=isch&sa=1&ei=d3oWXKeCO-2k_Qa76qbQBQ&q=book+shelf&oq=book+shelf&gs_l=img.3..0l2j0i10l2j0l2j0i10j0l3.233.6878..7020...0.0..0.55.497.10......2....1..gws-wiz-img.....0..35i39j0i67.bNR81VXfTDU#imgdii=zDSOgYDHr1xsLM:&imgrc=4Ys7Ms9VGdINPM:")
+}
+article {
+    float:left;
+    padding:100px;
+    width: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 9px 5px hsla(321, 20%, 70%, 0.1);
+    margin-bottom: 25px;
+    border-radius: 4px; /* Rounded corners */
+}
+nav div {
+    list-style-type: none;
+    padding: 0;
+}
+nav {
+    float: left;
+    width: 20%;
+    padding: 100px;
+  }
+section:after{
+    content: "";
+    display: table;
+    clear: both;
+}
